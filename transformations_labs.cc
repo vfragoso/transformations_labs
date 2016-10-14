@@ -51,8 +51,9 @@ Eigen::Vector3f Translate(const Eigen::Vector3f& point,
 	transformation(0, 3) = offset.x();
 	transformation(1, 3) = offset.y();
 	transformation(2, 3) = offset.z();
-	const Eigen::Vector4f homog_point(point.x(), point.y(), point.z(), 1.0);
-	const Eigen::Vector4f result = transformation * homog_point;
+	// const Eigen::Vector4f homog_point(point.x(), point.y(), point.z(), 1.0);
+	//const Eigen::Vector4f homog_point = point.homogenenous();
+	const Eigen::Vector4f result = transformation * point.homogenenous(); // homog_point;
 	const Eigen::Vector3f transformed_point(result.x(), result.y(), result.z());
 	return transformed_point;
 }
